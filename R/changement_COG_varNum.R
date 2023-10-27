@@ -73,7 +73,6 @@ changement_COG_varNum <- function(table_entree, annees, codgeo_entree=colnames(t
   }
 
   annees<- sapply(annees, unlist)
-  cat("inter: ", inter, "\n ", "annees: ", annees, "\n ")
   
   annees <- unique(c(annees[1]:inter[1],inter,inter[length(inter)]:annees[length(annees)]))
 
