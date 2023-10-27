@@ -64,6 +64,8 @@ changement_COG_varNum <- function(table_entree, annees, codgeo_entree=colnames(t
   }
   inter <- intersect(annees_possibles,annees)
 
+  inter<- sapply(inter, unlist)
+
   if(as.integer(annees[1])<=as.integer(annees[length(annees)])){
     inter <- inter[order(inter)]
   } else{
