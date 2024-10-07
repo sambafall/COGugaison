@@ -51,7 +51,7 @@
 
 changement_COG_varNum <- function(table_entree, annees, codgeo_entree=colnames(table_entree)[1],
                                   var_num=colnames(table_entree)[sapply(table_entree, is.numeric)],
-                                  agregation = TRUE, libgeo = FALSE, donnees_insee = TRUE){
+                                  agregation = TRUE, libgeo = FALSE, donnees_insee = TRUE, enlever_na=TRUE){
 
   if(!codgeo_entree%in%colnames(table_entree)){ #NEW
     stop(paste0("codgeo_entree doit être une colonne de table_entree."))
@@ -101,7 +101,7 @@ changement_COG_varNum <- function(table_entree, annees, codgeo_entree=colnames(t
   }
 
   if(agregation){
-    table_finale <- aggregate(table_finale[,c(var_num)],by =list(with(table_finale,get(codgeo_entree))),FUN=sum)
+    table_finale <- aggregate(table_finale[,c(var_num)],by =list(with(table_finale,get(codgeo_entree))),FUN=sum, na.rm=enlever_na)
     colnames(table_finale)<- c(codgeo_entree,var_num)
   }
 
